@@ -1,0 +1,25 @@
+{
+  "name": "alcs-spec-alignment",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@trimble-oss/moduswebcomponents-react": "1.16.0-react19",
+    "next": "^16.0.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.13",
+    "@trimble-oss/modus-icons": "1.8.0",
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.8.0"
+  }
+}

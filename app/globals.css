@@ -1,0 +1,145 @@
+@import '@trimble-oss/moduswebcomponents/modus-wc-styles.css';
+@import 'tailwindcss';
+
+:root {
+  --padding-card: 1rem;
+  --app-navbar-height: 56px;
+  --side-nav-min-width: 4rem;
+  --side-nav-max-width: 256px;
+}
+
+html,
+body {
+  height: 100dvh;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background-color: var(--modus-wc-color-base-page);
+  color: var(--modus-wc-color-base-content);
+  font-family: var(--font-open-sans), 'Open Sans', sans-serif;
+}
+
+body > modus-wc-theme-provider {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  background-color: var(--modus-wc-color-base-page);
+}
+
+.app-body-row {
+  position: relative;
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.side-rail-wrapper {
+  position: fixed;
+  left: 0;
+  top: var(--app-navbar-height, 56px);
+  height: calc(100dvh - var(--app-navbar-height, 56px));
+  width: var(--app-rail-width, 4rem);
+  z-index: 130;
+  overflow: hidden;
+}
+
+.side-rail-wrapper.is-overlay-collapsed {
+  width: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.side-rail-wrapper modus-wc-side-navigation,
+.side-rail-wrapper modus-wc-side-navigation .modus-wc-side-navigation {
+  width: 100%;
+}
+
+modus-wc-side-navigation modus-wc-menu-item {
+  padding-inline: 0;
+  margin-block: var(--modus-wc-spacing-2xs, 0.25rem);
+}
+
+#main-content {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  background-color: var(--modus-wc-color-base-page);
+  scrollbar-gutter: stable;
+}
+
+@media (min-width: 1024px) {
+  .app-shell #main-content {
+    margin-left: var(--side-nav-min-width);
+  }
+
+  .app-shell.app-shell-expanded #main-content {
+    margin-left: var(--side-nav-max-width);
+  }
+}
+
+@media (max-width: 1023px) {
+  .app-shell #main-content {
+    margin-left: 0 !important;
+  }
+}
+
+.app-shell modus-wc-navbar [slot='center'][hidden] {
+  display: none !important;
+}
+
+modus-wc-card modus-wc-card article {
+  background-color: var(--modus-wc-color-base-100) !important;
+}
+
+.page-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--modus-wc-spacing-xl, 1.5rem);
+}
+
+.page-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--modus-wc-spacing-md, 1rem);
+}
+
+modus-wc-navbar:not(:defined),
+modus-wc-side-navigation:not(:defined),
+modus-wc-button:not(:defined),
+modus-wc-card:not(:defined),
+modus-wc-typography:not(:defined),
+modus-wc-icon:not(:defined),
+modus-wc-badge:not(:defined),
+modus-wc-chip:not(:defined) {
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--modus-wc-color-primary);
+  outline-offset: 2px;
+}
